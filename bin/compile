@@ -26,8 +26,14 @@ echo "------> downloading go1.11.4"
 pushd $CACHE_DIR
 wget -q https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz
 tar zxf go1.11.4.linux-amd64.tar.gz
+mv go go1.11.4
 rm -f *.tar *.gz
-export PATH=$PATH:$CACHE_DIR/go/bin
+export PATH=$PATH:$CACHE_DIR/go1.11.4/bin
+echo path is $PATH
+echo -------
+ls -l $CACHE_DIR/go1.11.4/bin
+echo -----
+
 
 echo "------> downloading buffalo"
 go get -u -v github.com/gobuffalo/buffalo/...
