@@ -15,6 +15,7 @@ else
   echo "------> downloading go ${GO_VERSION}"
   pushd $CACHE_DIR >& /dev/null
   wget -q https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz
+  ls -l
   tar zxf go1.11.4.linux-amd64.tar.gz
   mv go go1.11.4
   rm -f *.tar *.gz
