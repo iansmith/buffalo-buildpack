@@ -26,7 +26,7 @@ if [ -f $CACHE_DIR/go${GO_VERSION}/bin ]; then
   ls -l $CACHE_DIR/go${GO_VERSION}/bin
 else
   echo "------> downloading go1.11.4"
-  pushd >& $CACHE_DIR
+  pushd $CACHE_DIR >& /dev/null
   wget -q https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz
   tar zxf go1.11.4.linux-amd64.tar.gz
   mv go go1.11.4
