@@ -19,9 +19,11 @@ if [ -d $CACHE_DIR/go ]; then
   ls -l $CACHE_DIR/go
 fi
 
-if [ -f $CACHE_DIR/go${GO_VERSION}/go/bin ]; then
-  echo "++++++> found cached $CACHE_DIR/go${GO_VERSION}/go/bin"
-  ls -l $CACHE_DIR/go${GO_VERSION}/go/bin
+echo our directory is $CACHE_DIR/go${GO_VERSION}/bin
+
+if [ -f $CACHE_DIR/go${GO_VERSION}/bin ]; then
+  echo "++++++> found cached $CACHE_DIR/go${GO_VERSION}/bin"
+  ls -l $CACHE_DIR/go${GO_VERSION}/bin
 else
   echo "------> downloading go1.11.4"
   pushd $CACHE_DIR
@@ -35,12 +37,14 @@ fi
 export PATH=$PATH:$CACHE_DIR/go${GO_VERSION}/bin
 echo path is $PATH
 echo -------
-ls -l $CACHE_DIR/go${GO_VERSION}/go/bin
+ls -l $CACHE_DIR/go${GO_VERSION}/bin
+echo -----
+go env
 echo -----
 
 
 echo "------> downloading buffalo"
-go get -u -v github.com/gobuffalo/buffalo/...
+go get -u github.com/gobuffalo/buffalo/...
 echo "------> installed " `buffalo version`
 
 echo "++++++> ls $BUILD_DIR"
