@@ -33,6 +33,10 @@ else
   mv node* node${NODE_VERSION}
   echo "------> installing webpack 3.1.0"
   PATH=$CACHE_DIR/node${NODE_VERSION}/bin:$PATH npm install webpack@3.1.0
+  echo ----
+  ls -l $CACHE_DIR
+  echo -----
+  ls -l $CACHE_DIR/node${NODE_VERSION}/bin
   popd >& /dev/null
 fi
 
