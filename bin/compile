@@ -9,9 +9,14 @@ echo "++++++> $BUILD_DIR"
 echo "++++++> $CACHE_DIR"
 echo "++++++> $ENV_DIR"
 
+echo --------
+ls -l $CACHE_DIR
+echo --------
+ls -l $CACHE_DIR/go-build-cache
 
 if [ -f $CACHE_DIR/go/bin ]; then
   echo "++++++> found cached $CACHE_DIR/go/bin"
+  ls -l $CACHE_DIR/go/bin
 fi
 
 echo "------> downloading go1.11.4"
