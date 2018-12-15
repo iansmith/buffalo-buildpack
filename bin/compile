@@ -12,6 +12,8 @@ echo "++++++> $ENV_DIR"
 echo --------
 ls -l $CACHE_DIR
 echo --------
+ls -l $CACHE_DIR/go
+echo --------
 ls -l $CACHE_DIR/go-build-cache
 
 if [ -f $CACHE_DIR/go/bin ]; then
