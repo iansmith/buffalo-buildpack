@@ -31,6 +31,8 @@ else
   tar xf node-v11.4.0-linux-x64.tar.xz
   rm -f *.tar *.xz
   mv node* node${NODE_VERSION}
+  echo "------> installing webpack 3.1.0"
+  PATH=$CACHE_DIR/node${NODE_VERSION}/bin:$PATH npm install webpack@3.1.0
   popd >& /dev/null
 fi
 
@@ -40,7 +42,7 @@ export GOBIN=$CACHE_DIR/go${GO_VERSION}/bin
 
 echo "------> downloading buffalo"
 go get -u github.com/gobuffalo/buffalo/...
-echo "------> buffalo version is "
+echo "------> buffalo version... "
 buffalo version
 
 cd $BUILD_DIR
