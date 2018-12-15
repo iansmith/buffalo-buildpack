@@ -12,7 +12,7 @@ if [ -f $CACHE_DIR/go${GO_VERSION}/bin ]; then
   echo "++++++> found cached $CACHE_DIR/go${GO_VERSION}/bin"
   ls -l $CACHE_DIR/go${GO_VERSION}/bin
 else
-  echo "------> downloading go ${GO_VERSION}"
+  echo "-----> downloading go ${GO_VERSION}"
   pushd $CACHE_DIR >& /dev/null
   wget -q https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz
   tar zxf go1.11.4.linux-amd64.tar.gz
@@ -22,10 +22,10 @@ else
 fi
 
 if [ -f $CACHE_DIR/node${NODE_VERSION}/bin ]; then
-  echo "++++++> found cached $CACHE_DIR/node${NODE_VERSION}/bin"
+  echo "-----> found cached $CACHE_DIR/node${NODE_VERSION}/bin"
   ls -l $CACHE_DIR/node${NODE_VERSION}/bin
 else
-  echo "------> downloading node ${NODE_VERSION}"
+  echo "-----> downloading node ${NODE_VERSION}"
   pushd $CACHE_DIR >& /dev/null
   wget -q https://nodejs.org/dist/v11.4.0/node-v11.4.0-linux-x64.tar.xz
   tar xf node-v11.4.0-linux-x64.tar.xz
@@ -38,14 +38,15 @@ export PATH=$PATH:$CACHE_DIR/go${GO_VERSION}/bin
 export PATH=$PATH:$CACHE_DIR/node${NODE_VERSION}/bin
 export GOBIN=$CACHE_DIR/go${GO_VERSION}/bin
 
-echo "------> downloading buffalo"
+echo "-----> downloading buffalo"
 go get -u github.com/gobuffalo/buffalo/...
-echo "------> buffalo version... "
-echo -n "\t" buffalo version
-echo "------> installing webpack 3.1.0"
-npm install --loglevel=error webpack@3.1.0
+echo "-----> buffalo version... "
+buffalo version
 
 cd $BUILD_DIR
+echo "-----> installing webpack 3.1.0"
+npm install --loglevel=error webpack@3.1.0
+
 environment=development
 
 if [ -f "$ENV_DIR/GO_ENV" ]; then
