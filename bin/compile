@@ -15,7 +15,6 @@ else
   echo "------> downloading go ${GO_VERSION}"
   pushd $CACHE_DIR >& /dev/null
   wget -q https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz
-  ls -l
   tar zxf go1.11.4.linux-amd64.tar.gz
   mv go go1.11.4
   rm -f *.tar *.gz
@@ -29,7 +28,7 @@ else
   echo "------> downloading node ${NODE_VERSION}"
   pushd $CACHE_DIR >& /dev/null
   wget -q https://nodejs.org/dist/v11.4.0/node-v11.4.0-linux-x64.tar.xz
-  tar zxf node-v11.4.0-linux-x64.tar
+  tar zxf node-v11.4.0-linux-x64.tar.xz
   rm -f *.tar *.xz
   mv node* node${NODE_VERSION}
   popd >& /dev/null
