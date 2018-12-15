@@ -13,7 +13,7 @@ rm -f *.tar *.gz
 export PATH=$PATH:$CACHE_DIR/go/bin
 
 echo "------> downloading buffalo"
-go install github.com/gobuffalo/buffalo/...
+go gut -u -v github.com/gobuffalo/buffalo/...
 echo "------> installed " `buffalo version`
 popd >& /dev/null
 
