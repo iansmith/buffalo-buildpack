@@ -21,7 +21,7 @@ fi
 
 echo "------> downloading go1.11.4"
 pushd $CACHE_DIR
-wget https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz
+wget -q https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz
 tar zxf go1.11.4.linux-amd64.tar.gz
 rm -f *.tar *.gz
 export PATH=$PATH:$CACHE_DIR/go/bin
