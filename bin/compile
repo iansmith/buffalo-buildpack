@@ -1,0 +1,26 @@
+#!/bin/bash
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+ENV_DIR=$3
+
+echo "------> downloading go1.11.4"
+pushd $CACHE_DIR
+wget https://dl.google.com/go/https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz
+tar zxf go1.11.4.linux-amd64.tar.gz
+rm -f *.tar *.gz
+export PATH=$PATH:$CACHE_DIR/go/bin
+
+echo "------> downloading buffalo"
+go install github.com/gobuffalo/buffalo/...
+echo "------> installed " `buffalo version`
+popd >& /dev/null
+
+cd $BUILD_DIR
+environment=development
+
+if [ -f "$ENV_DIR/GO_ENV" ]; then
+  environment=`cat $ENV_DIR/GO_ENV`
+fi
+
+buffalo build --environment=$environment --static -o /bin/app

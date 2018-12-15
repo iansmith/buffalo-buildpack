@@ -1,0 +1,23 @@
+#!/bin/bash
+BUILD_DIR=$1
+
+echo "<----- build dir is " $BUILD_DIR
+
+if [ ! -f $BUILD_DIR/database.yml ]; then
+  exit 1
+fi
+
+if [ ! -d $BUILD_DIR/models ]; then
+  exit 1
+fi
+
+if [ ! -d $BUILD_DIR/actions ]; then
+  exit 1
+fi
+
+if [ ! -d $BUILD_DIR/grifts ]; then
+  exit 1
+fi
+
+echo buffalo
+exit 0
