@@ -6,26 +6,13 @@ CACHE_DIR=$2
 ENV_DIR=$3
 
 GO_VERSION=1.11.4
-
-echo "++++++> $BUILD_DIR"
-echo "++++++> $CACHE_DIR"
-echo "++++++> $ENV_DIR"
-
-echo --------
-ls -l $CACHE_DIR
-echo --------
-if [ -d $CACHE_DIR/go ]; then
-  echo found go cache
-  ls -l $CACHE_DIR/go
-fi
-
-echo our directory is $CACHE_DIR/go${GO_VERSION}/bin
+NODE_VERSION=11.4.0
 
 if [ -f $CACHE_DIR/go${GO_VERSION}/bin ]; then
   echo "++++++> found cached $CACHE_DIR/go${GO_VERSION}/bin"
   ls -l $CACHE_DIR/go${GO_VERSION}/bin
 else
-  echo "------> downloading go1.11.4"
+  echo "------> downloading go ${GO_VERSION}"
   pushd $CACHE_DIR >& /dev/null
   wget -q https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz
   tar zxf go1.11.4.linux-amd64.tar.gz
@@ -34,28 +21,27 @@ else
   popd >& /dev/null
 fi
 
+if [ -f $CACHE_DIR/node${NODE_VERSION}/bin ]; then
+  echo "++++++> found cached $CACHE_DIR/node${NODE_VERSION}/bin"
+  ls -l $CACHE_DIR/node${NODE_VERSION}/bin
+else
+  echo "------> downloading node ${NODE_VERSION}"
+  pushd $CACHE_DIR >& /dev/null
+  wget -q https://nodejs.org/dist/v11.4.0/node-v11.4.0-linux-x64.tar.xz
+  tar zxf node-v11.4.0-linux-x64.tar
+  rm -f *.tar *.xz
+  mv node* node${NODE_VERSION}
+  popd >& /dev/null
+fi
+
 export PATH=$PATH:$CACHE_DIR/go${GO_VERSION}/bin
-echo path is $PATH
-echo -------
-ls -l $CACHE_DIR/go${GO_VERSION}/bin
-echo -----
-go env
-echo -----
+export PATH=$PATH:$CACHE_DIR/node${NODE_VERSION}/bin
 export GOBIN=$CACHE_DIR/go${GO_VERSION}/bin
 
 echo "------> downloading buffalo"
 go get -u github.com/gobuffalo/buffalo/...
-echo "------> installed " `buffalo version`
-
-echo "++++++> $CACHE_DIR/go${GO_VERSION}/bin"
-ls $CACHE_DIR/go${GO_VERSION}/bin
-
-echo "++++++> ls $BUILD_DIR"
-ls $BUILD_DIR
-echo "++++++> ls $CACHE_DIR"
-ls $CACHE_DIR
-echo "++++++> ls $ENV_DIR"
-ls $ENV_DIR
+echo "------> buffalo version is "
+buffalo version
 
 cd $BUILD_DIR
 environment=development
