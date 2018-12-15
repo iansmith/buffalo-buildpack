@@ -28,7 +28,7 @@ else
   echo "------> downloading node ${NODE_VERSION}"
   pushd $CACHE_DIR >& /dev/null
   wget -q https://nodejs.org/dist/v11.4.0/node-v11.4.0-linux-x64.tar.xz
-  tar zxf node-v11.4.0-linux-x64.tar.xz
+  tar xf node-v11.4.0-linux-x64.tar.xz
   rm -f *.tar *.xz
   mv node* node${NODE_VERSION}
   popd >& /dev/null
