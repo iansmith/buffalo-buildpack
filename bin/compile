@@ -5,6 +5,15 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
 
+echo "++++++> $BUILD_DIR"
+echo "++++++> $CACHE_DIR"
+echo "++++++> $ENV_DIR"
+
+
+if [ -f $CACHE_DIR/go/bin ]; then
+  echo "++++++> found cached $CACHE_DIR/go/bin"
+fi
+
 echo "------> downloading go1.11.4"
 pushd $CACHE_DIR
 wget https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz
@@ -16,6 +25,13 @@ echo "------> downloading buffalo"
 go get -u -v github.com/gobuffalo/buffalo/...
 echo "------> installed " `buffalo version`
 popd >& /dev/null
+
+echo "++++++> ls $BUILD_DIR"
+ls $BUILD_DIR
+echo "++++++> ls $CACHE_DIR"
+ls $CACHE_DIR
+echo "++++++> ls $ENV_DIR"
+ls $ENV_DIR
 
 cd $BUILD_DIR
 environment=development
