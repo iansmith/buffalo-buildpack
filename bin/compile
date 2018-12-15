@@ -12,9 +12,10 @@ echo "++++++> $ENV_DIR"
 echo --------
 ls -l $CACHE_DIR
 echo --------
-ls -l $CACHE_DIR/go
-echo --------
-ls -l $CACHE_DIR/go-build-cache
+if [ -d $CACHE_DIR/go ]; then
+  echo found go cache
+  ls -l $CACHE_DIR/go
+fi
 
 if [ -f $CACHE_DIR/go/bin ]; then
   echo "++++++> found cached $CACHE_DIR/go/bin"
