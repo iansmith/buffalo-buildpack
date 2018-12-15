@@ -5,6 +5,8 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
 
+GO_VERSION=1.11.4
+
 echo "++++++> $BUILD_DIR"
 echo "++++++> $CACHE_DIR"
 echo "++++++> $ENV_DIR"
@@ -17,28 +19,29 @@ if [ -d $CACHE_DIR/go ]; then
   ls -l $CACHE_DIR/go
 fi
 
-if [ -f $CACHE_DIR/go/bin ]; then
-  echo "++++++> found cached $CACHE_DIR/go/bin"
-  ls -l $CACHE_DIR/go/bin
+if [ -f $CACHE_DIR/go${GO_VERSION}/go/bin ]; then
+  echo "++++++> found cached $CACHE_DIR/go${GO_VERSION}/go/bin"
+  ls -l $CACHE_DIR/go${GO_VERSION}/go/bin
+else
+  echo "------> downloading go1.11.4"
+  pushd $CACHE_DIR
+  wget -q https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz
+  tar zxf go1.11.4.linux-amd64.tar.gz
+  mv go go1.11.4
+  rm -f *.tar *.gz
+  popd >& /dev/null
 fi
 
-echo "------> downloading go1.11.4"
-pushd $CACHE_DIR
-wget -q https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz
-tar zxf go1.11.4.linux-amd64.tar.gz
-mv go go1.11.4
-rm -f *.tar *.gz
-export PATH=$PATH:$CACHE_DIR/go1.11.4/bin
+export PATH=$PATH:$CACHE_DIR/go${GO_VERSION}/bin
 echo path is $PATH
 echo -------
-ls -l $CACHE_DIR/go1.11.4/bin
+ls -l $CACHE_DIR/go${GO_VERSION}/go/bin
 echo -----
 
 
 echo "------> downloading buffalo"
 go get -u -v github.com/gobuffalo/buffalo/...
 echo "------> installed " `buffalo version`
-popd >& /dev/null
 
 echo "++++++> ls $BUILD_DIR"
 ls $BUILD_DIR
