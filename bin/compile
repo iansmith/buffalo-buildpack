@@ -26,7 +26,7 @@ if [ -f $CACHE_DIR/go${GO_VERSION}/bin ]; then
   ls -l $CACHE_DIR/go${GO_VERSION}/bin
 else
   echo "------> downloading go1.11.4"
-  pushd $CACHE_DIR
+  pushd >& $CACHE_DIR
   wget -q https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz
   tar zxf go1.11.4.linux-amd64.tar.gz
   mv go go1.11.4
@@ -41,11 +41,14 @@ ls -l $CACHE_DIR/go${GO_VERSION}/bin
 echo -----
 go env
 echo -----
-
+export GOBIN=$CACHE_DIR/go${GO_VERSION}/bin
 
 echo "------> downloading buffalo"
 go get -u github.com/gobuffalo/buffalo/...
 echo "------> installed " `buffalo version`
+
+echo "++++++> $CACHE_DIR/go${GO_VERSION}/bin"
+ls $CACHE_DIR/go${GO_VERSION}/bin
 
 echo "++++++> ls $BUILD_DIR"
 ls $BUILD_DIR
