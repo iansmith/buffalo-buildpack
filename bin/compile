@@ -21,6 +21,8 @@ else
   popd >& /dev/null
 fi
 
+go env
+
 if [ -f $CACHE_DIR/node${NODE_VERSION}/bin ]; then
   echo "-----> found cached $CACHE_DIR/node${NODE_VERSION}/bin"
   ls -l $CACHE_DIR/node${NODE_VERSION}/bin
@@ -58,5 +60,6 @@ if [ -f "$ENV_DIR/GO_ENV" ]; then
   environment=`cat $ENV_DIR/GO_ENV`
 fi
 
-echo "-----> building for environment $environment"
+echo "-----> building for environment $environment in $PWD"
+ls -l
 buffalo build --environment=$environment -d --static -o /bin/app
