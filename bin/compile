@@ -56,6 +56,8 @@ echo "-----> installing mini-css-extract-plugin@0.4.5"
 npm install --loglevel=error mini-css-extract-plugin@0.4.5
 echo "-----> installing webpack-manifest-plugin@2.0.4"
 npm install --loglevel=error webpack-manifest-plugin@2.0.4
+echo "-----> webpack-clean-obsolete-chunks@0.4.0"
+npm install --loglevel=error webpack-clean-obsolete-chunks@0.4.0
 
 environment=development
 
