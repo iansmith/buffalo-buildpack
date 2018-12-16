@@ -58,8 +58,8 @@ echo "-----> installing webpack-manifest-plugin@2.0.4"
 npm install --loglevel=error webpack-manifest-plugin@2.0.4
 echo "-----> webpack-clean-obsolete-chunks@0.4.0"
 npm install --loglevel=error webpack-clean-obsolete-chunks@0.4.0
-echo "-----> webpack-live-reload@2.1.1"
-npm install --loglevel=error webpack-live-reload@2.1.1
+echo "-----> webpack-livereload-plugin@2.1.1"
+npm install --loglevel=error webpack-livereload-plugin@2.1.1
 
 environment=development
 
