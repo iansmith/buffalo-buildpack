@@ -54,6 +54,8 @@ echo "-----> installing copy-webpack-plugin 4.5.4"
 npm install --loglevel=error copy-webpack-plugin@4.5.4
 echo "-----> installing mini-css-extract-plugin@0.4.5"
 npm install --loglevel=error mini-css-extract-plugin@0.4.5
+echo "-----> installing webpack-manifest-plugin@2.0.4"
+npm install --loglevel=error webpack-manifest-plugin@2.0.4
 
 environment=development
 
