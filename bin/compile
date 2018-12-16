@@ -21,8 +21,6 @@ else
   popd >& /dev/null
 fi
 
-go env
-
 if [ -f $CACHE_DIR/node${NODE_VERSION}/bin ]; then
   echo "-----> found cached $CACHE_DIR/node${NODE_VERSION}/bin"
   ls -l $CACHE_DIR/node${NODE_VERSION}/bin
@@ -39,6 +37,9 @@ fi
 export PATH=$PATH:$CACHE_DIR/go${GO_VERSION}/bin
 export PATH=$PATH:$CACHE_DIR/node${NODE_VERSION}/bin
 export GOBIN=$CACHE_DIR/go${GO_VERSION}/bin
+
+go env
+
 
 echo "-----> downloading buffalo"
 go get -u github.com/gobuffalo/buffalo/...
