@@ -69,4 +69,5 @@ if [ -f "$ENV_DIR/GO_ENV" ]; then
   environment=`cat $ENV_DIR/GO_ENV`
 fi
 
-buffalo build --environment=$environment --static -o /bin/app
+echo "-----> building for environment $environment"
+buffalo build --environment=$environment -d --static -o /bin/app
