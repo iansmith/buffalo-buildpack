@@ -2,18 +2,27 @@
 BUILD_DIR=$1
 
 if [ ! -f $BUILD_DIR/database.yml ]; then
+  echo no database.yml found
+  exit 1
+fi
+
+if [ ! -f $BUILD_DIR/package.json ]; then
+  echo no package.json found
   exit 1
 fi
 
 if [ ! -d $BUILD_DIR/models ]; then
+  echo no models directory found
   exit 1
 fi
 
 if [ ! -d $BUILD_DIR/actions ]; then
+  echo no actions directory found
   exit 1
 fi
 
 if [ ! -d $BUILD_DIR/grifts ]; then
+  echo no grifts directory found
   exit 1
 fi
 
