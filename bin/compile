@@ -49,7 +49,7 @@ if [ -d "$CACHE_DIR/node_modules" ]; then
   cp -R "$CACHE_DIR/node_modules" .
 else
   npm install
-  cp -R node_modules $CACHE_DIR
+  cp -R node_modules --loglevel=error $CACHE_DIR
 fi
 
 environment=development
