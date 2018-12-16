@@ -48,8 +48,8 @@ if [ -d "$CACHE_DIR/node_modules" ]; then
   echo "using cached node_modules"
   cp -R "$CACHE_DIR/node_modules" .
 else
-  npm install
-  cp -R node_modules --loglevel=error $CACHE_DIR
+  npm install --loglevel=error
+  cp -R node_modules $CACHE_DIR
 fi
 
 environment=development
