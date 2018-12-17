@@ -63,4 +63,5 @@ fi
 
 echo "-----> building for environment $environment in $PWD"
 ls -l
-buffalo build --environment=$environment -d --static -o /bin/app
+#buffalo build --environment=$environment -d --static -o /bin/app
+buffalo build --environment=production --static -o /bin/app
