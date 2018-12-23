@@ -52,6 +52,10 @@ if [ -d "$CACHE_DIR/node_modules" ]; then
   cp -R "$CACHE_DIR/node_modules" .
 else
   npm install --loglevel=error
+  echo ----
+  pwd
+  echo ----
+  ls -l node_modules
   cp -R node_modules $CACHE_DIR
 fi
 
