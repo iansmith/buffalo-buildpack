@@ -16,15 +16,15 @@ BUILD_DIR=$1
 #   exit 1
 # fi
 
-if [ ! -d $BUILD_DIR/actions ]; then
-  echo no actions directory found
-  exit 1
-fi
-
-if [ ! -d $BUILD_DIR/grifts ]; then
-  echo no grifts directory found
-  exit 1
-fi
+# if [ ! -d $BUILD_DIR/actions ]; then
+#   echo no actions directory found
+#   exit 1
+# fi
+#
+# if [ ! -d $BUILD_DIR/grifts ]; then
+#   echo no grifts directory found
+#   exit 1
+# fi
 
 echo buffalo
 exit 0
