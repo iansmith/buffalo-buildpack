@@ -6,10 +6,10 @@ if [ ! -f $BUILD_DIR/database.yml ]; then
   exit 1
 fi
 
-if [ ! -f $BUILD_DIR/package.json ]; then
-  echo no package.json found
-  exit 1
-fi
+# if [ ! -f $BUILD_DIR/package.json ]; then
+#   echo no package.json found
+#   exit 1
+# fi
 
 #if [ ! -d $BUILD_DIR/models ]; then
 #  echo no models directory found
