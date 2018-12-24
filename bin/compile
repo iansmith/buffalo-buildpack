@@ -46,7 +46,7 @@ go env
 
 
 echo "-----> downloading buffalo"
-go get -u github.com/gobuffalo/buffalo/...
+go get -v -u github.com/gobuffalo/buffalo/...
 echo "-----> buffalo version... "
 buffalo version
 
@@ -67,6 +67,5 @@ if [ -f "$ENV_DIR/GO_ENV" ]; then
 fi
 
 echo "-----> building for environment $environment in $PWD"
-ls -l
 
 buffalo build --environment=production -d --static -o /bin/mazarin
