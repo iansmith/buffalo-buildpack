@@ -41,7 +41,7 @@ fi
 export PATH=$PATH:$CACHE_DIR/go${GO_VERSION}/bin
 export PATH=$PATH:$CACHE_DIR/node${NODE_VERSION}/bin
 export GOBIN=$CACHE_DIR/go${GO_VERSION}/bin
-export CGO_ENABLED="0"
+export GOPATH=$BUILD_DIR
 
 go env
 
