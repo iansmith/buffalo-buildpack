@@ -67,5 +67,6 @@ if [ -f "$ENV_DIR/GO_ENV" ]; then
 fi
 
 echo "-----> building for environment $environment in $PWD"
-
+ls -al .
+echo "-----"
 buffalo build --environment=production -d --static -o /bin/mazarin
