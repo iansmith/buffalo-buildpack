@@ -8,6 +8,10 @@ ENV_DIR=$3
 GO_VERSION=1.11.4
 NODE_VERSION=11.4.0
 
+echo "BUILD DIR ${BUILD_DIR}"
+echo "CACHE DIR ${CACHE_DIR}"
+echo "ENV DIR ${ENV_DIR}"
+
 if [ -f $CACHE_DIR/go${GO_VERSION}/bin ]; then
   echo "++++++> found cached $CACHE_DIR/go${GO_VERSION}/bin"
   ls -l $CACHE_DIR/go${GO_VERSION}/bin
