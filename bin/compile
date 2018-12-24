@@ -57,6 +57,9 @@ else
   pwd
   echo ----
   ls -l node_modules
+  echo ----
+  ls -l $BUILD_DIR
+  echo ----
   cp -R node_modules $CACHE_DIR
 fi
 
