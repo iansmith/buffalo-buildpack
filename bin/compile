@@ -41,6 +41,7 @@ fi
 export PATH=$PATH:$CACHE_DIR/go${GO_VERSION}/bin
 export PATH=$PATH:$CACHE_DIR/node${NODE_VERSION}/bin
 export GOBIN=$CACHE_DIR/go${GO_VERSION}/bin
+export GOPATH=$BUILD_DIR
 
 go env
 
@@ -67,5 +68,9 @@ if [ -f "$ENV_DIR/GO_ENV" ]; then
 fi
 
 echo "-----> building for environment $environment in $PWD"
+<<<<<<< HEAD
 
 #buffalo build --environment=production -d --static -o /bin/mazarin
+=======
+buffalo build --environment=production -d --static -o /bin/app
+>>>>>>> dcf40dc9d5a7833f2b8726a16780699d2dce6b33
